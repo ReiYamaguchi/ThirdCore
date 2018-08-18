@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<meta charset="utf-8">
+<title>login </title>
+
+<link href="/css/bootstrap.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<link href="/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquerymin.js}"></script>
+<script src="/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+  	<style type="text/css" scoped>
+	.scrollspy-example {
+    position: relative;
+    height: 490px;
+    margin: 15px 0px 15px 0px;
+    overflow: auto;
+    border: 5px solid white;
+    border-radius: 10px;
+	</style>
+	
+	 <script type="text/javascript">
+		$(function(){
+		    $("#btn").click(function(){
+		        $("#scroll").load("http://localhost:8080/chart");
+		    })
+		})
+        </script>
+	
+</head>
+<body>
+<body style="background-color:#dcdcdc;">
+
+  	
+  	<div class="row">
+  		<div class="col-xl-11" style="background-color:white;">
+  			<h3 style="font-family:'arial black'; margin:15px">Welecome to ThirdCore Home</h3>
+  		</div>
+  		<div class="col-xl-1" style="background-color:white;" >
+  			<input type="button" class="btn btn-primary mb-2" style="margin-top:10px;" value="ログアウト"  onClick="location.href='http://localhost:8080/login'">
+  		</div>
+  	</div>
+  	
+  	
+  	<div class="container" style="margin-top:50px;">
+  		<div class="row">
+  	
+	  	
+			<div class="col-xl-3">
+			  	
+			  	<center>
+			  	<img class="img-thumbnail" src="/image/springbootrogo.jpg" alt="Thumbnail image" style="margin:15px 0px 35px 0px;">	  			
+			  	<span style="font-color:#d3d3d3;">
+			  	<form  action="#" th:action="@{/login/home}" method="POST"> 
+			  	
+			  	<div th:if="${hyouzi}">
+	    			<input type="text" class="form-control" id="formGroupExampleInput" name="user_name" th:value="${user_name}" value="sss" style="margin:0px 0px 15px 0px; text-align: center;"readonly="readonly">
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="birth_day" th:value="${birth_day}"style="margin:15px 0px 15px 0px; text-align: center;"readonly="readonly">
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="birth_place" th:value="${birth_place}"style="margin:15px 0px 15px 0px; text-align: center;"readonly="readonly">
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="user_memo" th:value="${user_memo}"style="margin:15px 0px 15px 0px; text-align: center;"readonly="readonly">
+		    	</div>
+		    	<div th:unless="${hyouzi}">	
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="user_name" th:value="${user_name}" value="sss" style="margin:0px 0px 15px 0px; text-align: center;" autocomplete="off">
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="birth_day" th:value="${birth_day}"style="margin:15px 0px 15px 0px; text-align: center;" autocomplete="off">
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="birth_place" th:value="${birth_place}"style="margin:15px 0px 15px 0px; text-align: center;" autocomplete="off">
+		    		<input type="text" class="form-control" id="formGroupExampleInput" name="user_memo" th:value="${user_memo}"style="margin:15px 0px 15px 0px; text-align: center;" autocomplete="off">
+		    	</div>	
+		  			<button type="submit" class="btn btn-primary" style="margin:15px 0px 35px 0px; padding-top:25px;"><p th:text="${change}"></p></button>
+		  			</form>
+		  		</span>
+	  			</center>
+	  			
+			</div>
+			
+				
+			<div class="col-xl-6">
+			  	
+			  	<div data-spy="scroll" data-offset="0" class="scrollspy-example" id="scroll" style="background-color:white;">
+					<div th:each="customer : ${customers}">
+			
+					<div style="position: relative; margin-top:10px;">
+					<img class="img-thumbnail" src="/image/springbootrogo.jpg" alt="Thumbnail image" style="margin-left:10px; width:50px; height:50px; " >
+					<img src="/image/mention.png"  style=" margin-left:10px; width:300px; height:50px; "  alt="　　　　　　"> 
+					<span  style=" position:absolute; left:90px; top:12.5px;">
+					<p th:text="${customer.mention_content}" ></p>
+					</span>
+					</div>
+			
+					
+					        
+					    
+				 
+					</div>
+				</div>
+			  	
+			  	<center>
+			  	<form action="/mention" th:action="@{/mention}" method="POST" class="form-inline" style="margin:25px 0px 15px 0px;">
+					<input type="text" name="mention_content" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="メッセージを入力してください" size="40" style="margin-left:5px; border: 1px solid white;" autocomplete="off">
+					<button type="submit"  class="btn btn-primary" style="margin-top:-10px;">　sent　</button>
+				</form>
+				<button type="button"  class="btn btn-primary" style="margin-top:-10px;" id="btn">　sent　</button>
+				</center>
+				
+			</div>
+				
+				
+			<div class="col-xl-3" >
+			  	<img class="img2" src="/image/haitaturogo.png" style="margin:15px 0px 35px 10px;">
+				<img class="img2" src="/image/yahoorogo.png"style="margin:15px 0px 35px 10px;">
+			</div>
+			
+			
+		</div>
+  	</div>
+</body>
+</html>

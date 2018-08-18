@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<meta charset="utf-8">
+<title>login </title>
+
+<link href="/css/bootstrap.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<link href="/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+<script src="/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+	
+ <!-- header -->
+	<div class="row" style="background-color:black;">
+		<div class="col-xl-3">
+			<h3 style="font-family:'arial unicode ms'; margin:20px 0px 0px 15px;"><font color="white">Third Core Login Page</font></h3>
+		<br>
+		</div>
+		<div class="col-xl-8">			
+			<button type="button" style="margin: 17.5px 0px 0px 1250px;" class="btn btn-outline-primary">Create Account</button>	
+		</div>
+	</div>
+
+<!-- content -->
+  	<div class="container">
+  		
+  		<div class="row">
+  		
+  		
+			<div class="col-xl-3">
+		
+			</div>
+			
+			
+			<div class="col-xl-6">	
+				<div class="row" style="background-color:white;">
+								
+					<div class="col-xl-3">
+					
+					</div>
+					
+					<div class="col-xl-6">
+						<center>
+						<img src="image/thirdcoremark.png" alt="thirdcore" width="150" height="300" style="margin-top:60px;">
+						
+						<form  action="#" th:action="@{/login}" method="POST" class="form-horizontal"  style="margin-top:25px;"> 
+						
+							<input type="text" name="name" autocomplete="off" class="form-control"  placeholder="ID" style="margin:0px 0px 15px 0px;">
+							<input type="password" name="password" autocomplete="off" class="form-control" placeholder="Password" style="margin:15px 0px 15px 0px;"> 
+							<div class="form-check mb-2 mr-sm-2">
+								<input class="form-check-input" type="checkbox" id="inlineFormCheck">
+								<label class="form-check-label" for="inlineFormCheck">ログイン情報を保持する</label>
+							</div>					    
+							<button type="submit" class="btn btn-primary"  style="margin:15px 0px 0px 0px;">ログイン</button>
+							<div th:if="${isEven}">
+							<font color="red"><p style="margin-top:20px;"th:text="${result}"></p></font>
+							</div>
+							<div th:unless="${isEven}">
+							<p style="margin-top:20px;">　</p>
+							</div>
+						</form>
+						</center>
+					</div>
+					
+					<div class="col-xl-3" >
+					</div>
+					
+				</div>
+				<dir style="margin-top:20px;margin-left:95px;">
+					パスワードを忘れちゃった?そんな方は<a href="http://www.kyutech.ac.jp/examination/gs-transfer.html"><u>こちら</u></a>へ		
+				</dir>
+			</div>
+			
+			
+			<div class="col-xl-3">
+			</div>
+			
+			
+		</div>
+		
+  	</div>
+ 
+<!-- footer -->
+  	<div class="row" style="background-color:black; margin-top:95px;">
+  	
+		<div class="col-xl-3">
+		</div>
+		
+		<div class="col-xl-6" style="margin-top:17px;">
+			<center>
+			<img src="/image/twittermark.png" alt="twitter" width="30" height="30" >
+			<a href="http://www.kyutech.ac.jp/examination/gs-transfer.html">@third_core_tr</a>
+			　<img  src="/image/facebookmark.png" alt="facebook" width="20" height="20" style="margin-top:0px;">
+			<a style="padding-left:5px;" href="http://www.kyutech.ac.jp/examination/gs-transfer.html">@third_core_fk</a>
+			</center>
+		</div>
+		
+		<div class="col-xl-3" style="margin-top:40px;padding-left:260px;">
+		
+		<h6>@Third Core.inc from 2018</h6> 
+		
+	
+		</div>
+		
+	</div>
+	
+	
+</body>
+</html>
